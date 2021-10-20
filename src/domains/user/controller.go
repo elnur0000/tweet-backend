@@ -23,7 +23,6 @@ func (*userController) Register(c echo.Context) error {
 	if err := c.Validate(registerDTO); err != nil {
 		return err
 	}
-
 	existingUser, err := UserModel.FindByEmail(registerDTO.Email)
 	if err != nil {
 		return err

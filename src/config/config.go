@@ -31,7 +31,7 @@ func getEnv(key, fallback string) string {
 }
 
 func LoadConfig() error {
-	err := godotenv.Load("src/config/.env")
+	err := godotenv.Load("src/.env")
 	if err != nil {
 		return err
 	}
@@ -41,11 +41,11 @@ func LoadConfig() error {
 		JWTSecret: getEnv("JWT_SECRET", "5000"),
 		Env:       getEnv("ENV", "dev"),
 		Psql: psqlConfig{
-			Host:     os.Getenv("PSQL_HOST"),
-			Password: os.Getenv("PSQL_PWD"),
-			Port:     os.Getenv("PSQL_PORT"),
-			DB:       os.Getenv("PSQL_DB"),
-			User:     os.Getenv("PSQL_USER"),
+			Host:     os.Getenv("POSTGRES_HOST"),
+			Password: os.Getenv("POSTGRES_PASSWORD"),
+			Port:     os.Getenv("POSTGRES_PORT"),
+			DB:       os.Getenv("POSTGRES_DB"),
+			User:     os.Getenv("POSTGRES_USER"),
 		},
 	}
 	return nil
